@@ -14,8 +14,8 @@ type Book struct {
 	Pdf    string             `json:"pdf"`
 }
 
-var bookCollection mongo.Collection = *configs.GetDB().Collection("books")
-
 func GetBookCollection() mongo.Collection {
+	var bookCollection mongo.Collection = *configs.GetDB().Collection("books")
+
 	return bookCollection
 }

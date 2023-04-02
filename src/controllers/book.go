@@ -1,11 +1,9 @@
 package controllers
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
-	"library/src/models"
 	"library/src/services"
+	"library/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -20,18 +18,21 @@ func GetBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, books)
 }
 
-func CreateBook(c *gin.Context) {
+func GetBook(c *gin.Context) {
 
-	req := c.Request
-	body, bodyError := ioutil.ReadAll(req.Body)
-	if bodyError != nil {
-		fmt.Println(bodyError)
+	id := c.Param("id")
+
+	book := services.GetBook(id)
+	if book.Id.Hex() == utils.NullId {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Book not found"})
+		return
 	}
-	book := models.Book{}
-	readError := json.Unmarshal(body, &book)
-	if readError != nil {
-		fmt.Println(readError)
-	}
+	c.IndentedJSON(http.StatusOK, book)
+}
+
+func CreateBook(c *gin.Context) {
+	book := services.GetBookFromRequest(c)
+
 	fmt.Println(book)
 	if book.Author == "" || book.Pdf == "" || book.Title == "" {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Bad request"})

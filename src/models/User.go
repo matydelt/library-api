@@ -13,9 +13,7 @@ type User struct {
 	Password string             `json:"password"`
 }
 
-var db *mongo.Database = configs.GetDB()
-var userCollection mongo.Collection = *db.Collection("users")
-
 func GetUserCollection() mongo.Collection {
+	var userCollection mongo.Collection = *configs.GetDB().Collection("users")
 	return userCollection
 }
