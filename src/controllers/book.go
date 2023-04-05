@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"library/src/services"
 	"library/utils"
 	"net/http"
@@ -33,7 +32,6 @@ func GetBook(c *gin.Context) {
 func CreateBook(c *gin.Context) {
 	book := services.GetBookFromRequest(c)
 
-	fmt.Println(book)
 	if book.Author == "" || book.Pdf == "" || book.Title == "" {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Bad request"})
 		return

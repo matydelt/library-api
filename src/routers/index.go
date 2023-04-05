@@ -4,7 +4,8 @@ import "github.com/gin-gonic/gin"
 
 func InitServer() {
 	router := gin.Default()
-	GetBookRouter(router)
+	SetBookRouter(router)
+	SetUserRouter(router)
 
 	router.Run("localhost:3001")
 }
