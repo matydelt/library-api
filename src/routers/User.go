@@ -6,7 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func SetUserRouter(router *gin.Engine) {
-	router.PUT("/signIn", controllers.SignIn)
-	router.POST("/signUp", controllers.SignUp)
+func SetAuthRouter(router *gin.Engine) {
+	group := router.Group("/auth")
+	{
+		group.PUT("/signIn", controllers.SignIn)
+		group.POST("/signUp", controllers.SignUp)
+	}
 }

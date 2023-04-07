@@ -7,7 +7,10 @@ import (
 )
 
 func SetBookRouter(router *gin.Engine) {
-	router.GET("/books", controllers.GetBooks)
-	router.GET("/book/:id", controllers.GetBook)
-	router.POST("/book", controllers.CreateBook)
+	group := router.Group("/book")
+	{
+		group.GET("/all", controllers.GetBooks)
+		group.GET("/:id", controllers.GetBook)
+		group.POST("", controllers.CreateBook)
+	}
 }
