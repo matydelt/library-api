@@ -9,7 +9,8 @@ import (
 func SetAuthRouter(router *gin.Engine) {
 	group := router.Group("/auth")
 	{
-		group.PUT("/signIn", controllers.SignIn)
-		group.POST("/signUp", controllers.SignUp)
+		group.PUT("/signin", controllers.SignIn)
+		group.POST("/signup", controllers.SignUp)
 	}
+
 }

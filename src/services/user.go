@@ -50,7 +50,7 @@ func ValidateRequest(c *gin.Context, user models.User) bool {
 		return false
 	}
 	if GetUserByUsername(user.Username).Username != "" {
-		c.JSON(400, gin.H{"error": "El usuario ya existe"})
+		c.JSON(400, gin.H{"error": "User already exists"})
 		return false
 	}
 	return true

@@ -8,10 +8,12 @@ import (
 )
 
 type Book struct {
-	Id     primitive.ObjectID `json:"id" bson:"_id,omitempty"`
-	Title  string             `json:"title"`
-	Author string             `json:"author"`
-	Pdf    string             `json:"pdf"`
+	Id          primitive.ObjectID `json:"id" bson:"_id,omitempty"`
+	Title       string             `json:"title" bson:"title"`
+	Author      string             `json:"author" bson:"author"`
+	Year        int                `json:"year" bson:"year"`
+	Description string             `json:"description" bson:"description"`
+	Pdf         string             `json:"pdf" bson:"pdf"`
 }
 
 func GetBookCollection() mongo.Collection {
