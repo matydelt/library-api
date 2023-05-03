@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"library/src/services"
 	"library/utils"
 
@@ -10,7 +9,6 @@ import (
 
 func SignIn(c *gin.Context) {
 	user := services.GetCredentialsFromRequest(c)
-	fmt.Println(user)
 	user = services.SignIn(user)
 	if user.Id.Hex() == utils.NullId {
 		c.JSON(400, gin.H{"error": "El usuario no existe"})
@@ -22,7 +20,7 @@ func SignIn(c *gin.Context) {
 func SignUp(c *gin.Context) {
 	credentials := services.GetCredentialsFromRequest(c)
 	validated := services.ValidateRequest(c, credentials)
-	if validated == false {
+	if !validated {
 		return
 	}
 	user := services.SignUp(credentials)
