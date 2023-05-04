@@ -9,7 +9,7 @@ import (
 )
 
 func GetBooks(c *gin.Context) {
-
+	// panic("not implemented")
 	title := c.Query("title")
 	author := c.Query("author")
 	books := services.GetBooks(title, author)
