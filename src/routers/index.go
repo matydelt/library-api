@@ -8,8 +8,8 @@ import (
 
 func InitServer() {
 	router := gin.Default()
-	router.Use(middlewares.Logger())
 	SetBookRouter(router)
+	router.Use(middlewares.Logger())
 	SetAuthRouter(router)
 
 	router.Run("localhost:3001")

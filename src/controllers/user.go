@@ -25,7 +25,7 @@ func SignUp(c *gin.Context) {
 	}
 	user := services.SignUp(credentials)
 	if user.Id.Hex() == utils.NullId {
-		c.JSON(400, gin.H{"error": "Error al crear el usuario"})
+		c.JSON(500, gin.H{"error": "Error al crear el usuario"})
 	} else {
 		c.JSON(200, user)
 	}

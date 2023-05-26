@@ -12,7 +12,7 @@ import (
 var db *mongo.Database
 
 // Connect initializes a connection to MongoDB
-func Connect(uri string, dbName string) *mongo.Database {
+func MongoConnect(uri string, dbName string) *mongo.Database {
 	clientOptions := options.Client().ApplyURI(uri)
 
 	// Connect to MongoDB

@@ -22,10 +22,10 @@ func SignIn(credentials models.User) models.User {
 		fmt.Println(err)
 	}
 	if user.Username == "" {
-		fmt.Println("El usuario no existe")
+		fmt.Println("The user does not exist")
 	}
 	if user.Password != credentials.Password {
-		fmt.Println("La contraseña es incorrecta")
+		fmt.Println("The password is incorrect")
 	}
 	return user
 }
